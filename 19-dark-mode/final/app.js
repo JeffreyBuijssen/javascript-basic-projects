@@ -2,7 +2,10 @@ const toggleBtn = document.querySelector('.btn');
 const articlesContainer = document.querySelector('.articles');
 
 toggleBtn.addEventListener('click', () => {
-  document.documentElement.classList.toggle('dark-theme');
+    const darkMode = document.documentElement.classList.toggle('dark-theme');
+    const attr = document.createAttribute("data-darkMode");
+    attr.value = darkMode;
+    toggleBtn.setAttributeNode(attr);
 });
 
 const articlesData = articles

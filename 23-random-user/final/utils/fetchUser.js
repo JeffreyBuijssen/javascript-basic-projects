@@ -1,7 +1,12 @@
 const URL = 'https://randomuser.me/api/';
 
 const getUser = async () => {
-  const response = await fetch(URL);
+    const response = await fetch(URL, {
+        headers: {
+            "Content-Type": "application/json",
+            "User-Agent": "Learning App",
+        }
+    });
   const data = await response.json();
   // destructure
   const person = data.results[0];

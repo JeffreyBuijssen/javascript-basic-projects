@@ -6,9 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dark Mode</title>
     <link rel="stylesheet" href="./styles.css" />
+    <!-- font-awesome -->
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+/>
   </head>
   <body>
-    <h1>dark mode starter</h1>
+    <main>
+      <<nav>
+        <div class="nav-center">
+          <span>overreacted</span>
+          <button class="btn toggle-btn">
+            toggle <i class="fas fa-moon"></i>
+          </button>
+        </div>
+      </nav>
+      <section class="articles">
+        <!-- single item -->
+          <article class="post">
+            <h2>post title</h2>
+            <div class="post-info">
+              <span>May 21st, 2024</span>
+              <span>10 minutes</span>
+            </div>
+            <p> Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nulla consequuntur neque voluptas ad fugit quidem, explicabo mollitia vitae recusandae veritatis commodi quis officiis eaque illo fuga molestiae, omnis maiores in?
+            </p>
+          </article>
+        <!-- end of single item -->
+      </section>
+
+    </main>
+    <!-- moment -->
+<script
+  src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+  integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+></script>
+    <script src="./data.js"></script>
     <script src="./app.js"></script>
+    
   </body>
 </html>

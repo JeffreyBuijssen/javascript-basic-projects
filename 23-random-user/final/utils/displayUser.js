@@ -20,6 +20,6 @@ const displayUser = (person) => {
       btn.classList.add('active');
     });
   });
-};
+}
 
 export default displayUser;

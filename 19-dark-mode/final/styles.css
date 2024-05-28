@@ -18,6 +18,8 @@ Global Styles
   --clr-grey: #cbd5e1;
 }
 
+
+
 *,
 ::after,
 ::before {
@@ -90,4 +92,7 @@ Navbar
 }
 .post-info span {
   margin-right: 0.5rem;
+}
+.hide {
+    display: none;
 }

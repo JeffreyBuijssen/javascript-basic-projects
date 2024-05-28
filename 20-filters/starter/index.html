@@ -8,7 +8,29 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <h1>filters projects starter</h1>
+    <section class="products">
+    <div class="filters-container">
+      <form action="" class="input-form">
+        <input type="text" class="search-input"placeholder="search...">
+      </form>
+      <h5>company</h5>
+      <article class="companies">
+        <button class="company-btn">all</button>
+      </article>
+    </div>
+    <div class="products-container">
+      <!-- single item -->
+      <article class="product">
+      <img src="https://course-api.com/images/store/product-1.jpeg" alt="fallback-product-img" class="product-img img">
+        <footer>
+          <h5 class="product-name">Product Name</h5>
+          <span class="product-price">€5.55</span>
+          <!-- end of single item -->
+        </footer>
+      </article>
+    </div>
+    </section>
+    <script src="./products.js"></script>
     <script src="./app.js"></script>
   </body>
 </html>
