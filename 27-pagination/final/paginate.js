@@ -9,4 +9,4 @@ const paginate = (followers) => {
   return newFollowers
 }
 
-export default paginate
+export default paginate;

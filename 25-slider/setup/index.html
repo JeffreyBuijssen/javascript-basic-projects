@@ -14,7 +14,58 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <h2>slider project</h2>
+    <section class="slider">
+      <div class="reviews">
+	      <h2>
+          <span>/</span>
+          reviews
+        </h2>
+      </div>
+      <div class="slide-container">
+        <!-- single element -->
+        <article class="slide active">
+          <img src="https://www.course-api.com/images/people/person-3.jpeg" alt="peter doe" class="img">
+          <h4>peter doe</h4>
+          <p class="title">product manager</p>
+          <p class="texts">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Laudantium ipsam impedit velit explicabo reiciendis corrupti, error, cupiditate odio voluptatum obcaecati incidunt vel iusto molestias illo voluptatibus facere nemo ea assumenda.</p>
+          <div class="quote-icon">
+            <i class="fas fa-quote-right"></i>
+          </div>
+        </article>
+        <!-- end of single element -->
+        <!-- single element -->
+        <article class="slide next">
+          <img src="https://www.course-api.com/images/people/person-1.jpeg" alt="suzan doe" class="img">
+          <h4>suzan doe</h4>
+          <p class="title">developer</p>
+          <p class="texts">Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias minus ab rem aliquam velit. Odio deserunt asperiores totam accusantium quaerat!</p>
+          <div class="quote-icon">
+            <i class="fas fa-quote-right"></i>
+          </div>
+        </article>
+        <!-- end of single element -->
+        <!-- single element -->
+        <article class="slide last">
+          <img src="https://www.course-api.com/images/people/person-2.jpeg" alt="emma doe" class="img">
+          <h4>emma doe</h4>
+          <p class="title">designer</p>
+          <p class="texts">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem eius, esse minus quisquam odit explicabo dignissimos beatae fuga molestiae quibusdam!</p>
+          <div class="quote-icon">
+            <i class="fas fa-quote-right"></i>
+          </div>
+        </article>
+        <!-- end of single element -->
+        
+      </div>
+      <!-- prev btn -->
+      <button class="btn prev-btn">
+        <i class="fas fa-chevron-left"></i>
+      </button>
+      <!-- next btn -->
+      <button class="btn next-btn">
+        <i class="fas fa-chevron-right"></i>
+      </button>
+    </section>
     <script type="module" src="app.js"></script>
   </body>
 </html>

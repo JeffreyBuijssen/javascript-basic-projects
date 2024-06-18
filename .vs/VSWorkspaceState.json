@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\20-filters\\final",
-    "\\20-filters\\starter",
-    "\\22-products\\final",
-    "\\22-products\\starter",
-    "\\23-random-user\\final",
-    "\\23-random-user\\final\\utils",
-    "\\23-random-user\\setup\\utils",
-    "\\24-cocktails",
-    "\\24-cocktails\\final"
+    "\\06-modal\\setup",
+    "\\07-questions\\setup",
+    "\\08-menu\\setup",
+    "\\08-menu\\setup\\images",
+    "\\10-scroll\\setup",
+    "\\14-grocery-bud",
+    "\\14-grocery-bud\\setup",
+    "\\27-pagination",
+    "\\27-pagination\\final"
   ],
-  "SelectedNode": "\\20-filters",
+  "SelectedNode": "\\27-pagination\\setup\\displayButtons.js",
   "PreviewInSolutionExplorer": false
 }
