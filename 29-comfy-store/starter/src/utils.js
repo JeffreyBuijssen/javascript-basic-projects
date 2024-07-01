@@ -17,10 +17,20 @@ const getElement = (selection) => {
   );
 };
 
-const formatPrice = () => {};
-
-const getStorageItem = () => {};
-const setStorageItem = () => {};
+let USDollar = new Intl.NumberFormat('en-US', { style: 'currency', currency: 'USD', });
+let Euro = new Intl.NumberFormat('en-NL', { style: 'currency', currency: 'EUR', });
+const formatPrice = (price) => {
+    return Euro.format(parseFloat(price/100));
+};
+const getStorageItem = (id) => {
+    return localStorage.getItem(id)
+        ? JSON.parse(localStorage.getItem(id))
+        : [];
+};
+const setStorageItem = (id, value) => {
+    let strigifiedItem = JSON.stringify(value);
+    localStorage.setItem(id, strigifiedItem);
+};
 
 export {
   allProductsUrl,

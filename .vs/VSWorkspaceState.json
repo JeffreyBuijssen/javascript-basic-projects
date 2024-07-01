@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\06-modal\\setup",
-    "\\07-questions\\setup",
-    "\\08-menu\\setup",
-    "\\08-menu\\setup\\images",
-    "\\10-scroll\\setup",
-    "\\14-grocery-bud",
-    "\\14-grocery-bud\\setup",
-    "\\27-pagination",
-    "\\27-pagination\\final"
+    "\\20-filters\\starter",
+    "\\23-random-user",
+    "\\23-random-user\\setup",
+    "\\23-random-user\\setup\\utils",
+    "\\24-cocktails",
+    "\\29-comfy-store",
+    "\\29-comfy-store\\final",
+    "\\29-comfy-store\\final\\src",
+    "\\29-comfy-store\\final\\src\\cart"
   ],
-  "SelectedNode": "\\27-pagination\\setup\\displayButtons.js",
+  "SelectedNode": "\\29-comfy-store\\final\\src\\cart\\addToCartDOM.js",
   "PreviewInSolutionExplorer": false
 }
