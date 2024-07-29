@@ -1,0 +1,13 @@
+place square representing player on screen
+
+features:
+
+- square representing player
+- square can be controlled using wsad? or a, d and space
+	- change colour every jump]
+	- the square leaves a trail as it moves. done by drawing the background as transparent each frame.
+- square has collision detection with borders of the world
+	- 'world' is defined by a height and width.
+
+changes:
+- move eventHandlers to main.js

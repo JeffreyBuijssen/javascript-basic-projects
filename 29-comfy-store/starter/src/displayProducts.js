@@ -9,12 +9,12 @@ const display = (products, element, filters) => {
             return `
             <article class="product">
               <div class="product-container">
-                <img src="${image}" atl="${name}" class="img product-img">
-                <div class=product-icons>
-                  <a class=product-icon href="products.html?id=${id}">
+                <img src="${image}" alt="${name}" class="img product-img">
+                <div class="product-icons">
+                  <a class="product-icon"href="product.html?id=${id}">
                     <i class="fas fa-search"></i>
                   </a>
-                  <button class=product-icon>
+                  <button class="product-icon product-cart-btn" data-id="${id}">
                     <i class="fas fa-shopping-cart"></i>
                   </button>
                 </div>
@@ -30,6 +30,7 @@ const display = (products, element, filters) => {
     if (filters) return;
 
     element.addEventListener('click', (e) => {
+        
         const parent = e.target.parentElement;
         if (parent.classList.contains('product-cart-btn')) {
             addToCart(parent.dataset.id);

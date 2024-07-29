@@ -9,6 +9,27 @@ import setupCompanies from '../filters/companies.js';
 import setupPrice from '../filters/price.js';
 
 // specific imports
-import { store } from '../store.js';
+import { store, setupStore } from '../store.js';
 import display from '../displayProducts.js';
 import { getElement } from '../utils.js';
+// import fetchProducts
+import fetchProducts from '../fetchProducts.js';
+
+const productsContainer = getElement('.products-container');
+
+const init = async () => {
+    const loading = getElement('.page-loading');
+
+    if (store.length < 1) {
+        const products = await fetchProducts();
+        setupStore(products);
+    }
+    display(store, productsContainer);
+
+    setupSearch();
+    setupCompanies();
+    setupPrice();
+    loading.style.display = 'none';
+}
+
+init();

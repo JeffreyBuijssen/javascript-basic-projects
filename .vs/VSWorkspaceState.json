@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\20-filters\\starter",
-    "\\23-random-user",
-    "\\23-random-user\\setup",
-    "\\23-random-user\\setup\\utils",
-    "\\24-cocktails",
-    "\\29-comfy-store",
-    "\\29-comfy-store\\final",
-    "\\29-comfy-store\\final\\src",
-    "\\29-comfy-store\\final\\src\\cart"
+    "\\02-counter",
+    "\\02-counter\\final",
+    "\\02-counter\\setup",
+    "\\32-platformer-game",
+    "\\32-platformer-game\\final",
+    "\\32-platformer-game\\final\\02",
+    "\\32-platformer-game\\setup",
+    "\\32-platformer-game\\setup\\01",
+    "\\32-platformer-game\\setup\\02"
   ],
-  "SelectedNode": "\\29-comfy-store\\final\\src\\cart\\addToCartDOM.js",
+  "SelectedNode": "\\32-platformer-game\\final\\02\\main-02.js",
   "PreviewInSolutionExplorer": false
 }

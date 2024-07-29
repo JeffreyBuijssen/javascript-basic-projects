@@ -1,12 +1,14 @@
 import { getElement } from '../utils.js';
+const cartOverlay = getElement('.cart-overlay');
 
 const openCart = () => {
-    getElement('.cart-overlay').classList.add('show');
+    if (!cartOverlay.classList.contains('show'))
+        cartOverlay.classList.add('show');
 };
 
 const closeCart = () => {
-    if(getElement('.cart-overlay').classList.contains("show"))
-    getElement('.cart-overlay').classList.remove('show');
+    if (cartOverlay.classList.contains("show"))
+    cartOverlay.classList.remove('show');
 };
 
 getElement(".toggle-container").addEventListener("click", openCart);
