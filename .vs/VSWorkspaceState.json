@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\02-counter",
-    "\\02-counter\\final",
-    "\\02-counter\\setup",
     "\\32-platformer-game",
     "\\32-platformer-game\\final",
-    "\\32-platformer-game\\final\\02",
+    "\\32-platformer-game\\final\\03",
+    "\\32-platformer-game\\final\\04",
+    "\\32-platformer-game\\final\\05",
     "\\32-platformer-game\\setup",
     "\\32-platformer-game\\setup\\01",
-    "\\32-platformer-game\\setup\\02"
+    "\\32-platformer-game\\setup\\02",
+    "\\32-platformer-game\\setup\\05"
   ],
-  "SelectedNode": "\\32-platformer-game\\final\\02\\main-02.js",
+  "SelectedNode": "\\32-platformer-game\\final\\05\\main-05.js",
   "PreviewInSolutionExplorer": false
 }

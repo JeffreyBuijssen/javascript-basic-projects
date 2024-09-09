@@ -396,8 +396,6 @@ Game.World.Object.Player.prototype = {
     },
 
     updatePosition: function (gravity, friction) {
-        console.log(`velocity: (${this.velocity.x}, ${this.velocity.y})`);
-
         this.oldX = this.x;
         this.oldY = this.y;
 
