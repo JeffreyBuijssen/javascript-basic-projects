@@ -25,13 +25,14 @@ window.addEventListener('load', function (event) {
     }
 
     const resize = function () {
-        console.log('Main.resize:' + document.documentElement.clientWidth);
         display.resize(document.documentElement.clientWidth - 32, document.documentElement.clientHeight - 32, game.world.height / game.world.width);
         display.render();
     }
 
     var render = function () {
-        display.preDraw(game.world.backgroundColor, [game.world.player]);
+        display.drawMap(game.world.map, game.world.columns);
+        
+        display.drawPlayer(game.world.player, game.world.player.color1, game.world.player.color2);
         display.render();
     };
 
@@ -67,21 +68,14 @@ window.addEventListener('load', function (event) {
     display.buffer.canvas.height = game.world.height;
     display.buffer.canvas.width = game.world.width;
 
+    display.tileSheet.image.addEventListener('load', function (event) {
+        resize();
+        engine.start();
+    }, {once: true});
+
+    display.tileSheet.image.src = 'rabbit-trap.png';
 
     window.addEventListener('resize', resize);
-    /*window.addEventListener('keydown', function () {
-        console.log('a key has been pressed');
-    });*/
     window.addEventListener('keydown', keyDownUp);
     window.addEventListener('keyup', keyDownUp);
-
-    resize();
-    engine.start();
-
-       ////////////////////////
-      //// Event Handlers ////
-    ////////////////////////
-
-
-    
 });

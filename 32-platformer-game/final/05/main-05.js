@@ -72,7 +72,6 @@ window.addEventListener("load", function(event) {
     game.world.tile_set.columns, game.world.map, game.world.columns,  game.world.tile_set.tile_size);
 
     let frame = game.world.tile_set.frames[game.world.player.frame_value];
-
     display.drawObject(assets_manager.tile_set_image,
     frame.x, frame.y,
     game.world.player.x + Math.floor(game.world.player.width * 0.5 - frame.width * 0.5) + frame.offset_x,

@@ -137,7 +137,6 @@ Game.World.prototype = {
 
     this.player.velocity_x *= this.friction;
     this.player.velocity_y *= this.friction;
-
     this.collideObject(this.player);
 
   }

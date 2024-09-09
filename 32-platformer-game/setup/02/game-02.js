@@ -3,12 +3,13 @@ change some color values which then get drawn to the display canvas in the displ
 
 const Game = function () {
 
-    this.backgroundColor = 'rgba(40,48,56,0.25)';
+    //this.backgroundColor = 'black';
 
     this.world = {
+        backgroundColor: 'rgba(40,48,56,0.25)',
 
         // properties:
-        friction: 0.9,
+        friction: .1,
         gravity: 3.0,
 
         height: 72, //px
@@ -43,8 +44,8 @@ const Game = function () {
         },
 
         applyFriction: function (gameObject) {
-            gameObject.velocityX *= this.friction;
-            gameObject.velocityY *= this.friction;
+            gameObject.velocityX *= 1 - this.friction;
+            gameObject.velocityY *= 1 - this.friction;
         },
         update: function () {
             this.applyGravity(this.player);

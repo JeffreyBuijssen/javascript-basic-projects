@@ -1,0 +1,45 @@
+
+Game.js:
+- fixed offset in tilemap
+- changed drawPlayer's Math.floor to Math.round for smoother display
+- collison map in game.world
+
+- collider function to collide with collision map instead of borders of screen.
+- added broad phase collsion detection
+	broad face collision function gets tile's collison value from collision map 
+	and hands that value + the player object to the Routing Function.
+
+- added collider class
+	- routing function
+		- checks collision value in switch statement
+			calls appropriate narrow face collsion methods
+	- added narrow phase collision function
+	   does collsion decection + response
+
+- added base class for player (Game.World.Object) player enherits from
+  Simple rectangle to use for collsion
+  - base class has xOld and yOld properties 
+  - has a lot of helper functions:
+	- getBottom
+	- getRight
+	- getTop
+	- getOldBottom
+	- getOldLeft
+	- getOldRight
+	- getOldTop
+	- setBottom
+	- setLeft
+	- setRight
+	- setTop
+	- setOldBottom
+	- setOldLeft
+	- setOldRight
+	- setOldTop
+
+  [x] Game.World.Object.Player now extends object class
+		// constructor call (x = 100, y = 100, w = 12, h = 12)
+
+  [x] Extend player Prototype off of Object prototype with Object.assign (prototype, basePrototype)
+
+
+display.js

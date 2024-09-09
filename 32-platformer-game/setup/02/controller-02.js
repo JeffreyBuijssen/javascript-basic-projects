@@ -18,7 +18,6 @@ const Controller = function () {
         // right: rightArrow = 39, d = 68
         // down: downArrow = 40, s = 83
 
-        console.log('keyDownUp has been called');
         // Check if pressed key is a movement key
         switch (keyCode) {
             case 37: case 65:

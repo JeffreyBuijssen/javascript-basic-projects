@@ -18,17 +18,17 @@ const Engine = function (timeStep, update, render) {
         this.time = undefined,
         this.timeStep = timeStep,
 
-
-        // a bool flag (false) flaggin whether the update function has been called since the last cycle
-        this.updated = false;
+    // a bool flag (false) flaggin whether the update function has been called since the last cycle
+    this.updated = false;
 
     this.update = update;
     this.render = render;
 
     // a declaration for this.run, which contains all the steps for a single cycle of the game loop (timeStamp as param)
     this.run = function (timeStamp) {
+        //console.log(1000 / (timeStamp-this.time));
         // run adds deltaTime to accumulatedTime.
-        this.accumulatedTime += timeStep;
+        this.accumulatedTime += timeStamp - this.time;
         // sets time to provided timeStamp
         this.time = timeStamp;
 
@@ -57,7 +57,10 @@ const Engine = function (timeStep, update, render) {
         // set updated to true to make an redraw is needed
 
         // check if update has been set to true by the previous loop, if so, call the render function
-        if (this.updated) this.render(timeStamp);
+        if (this.updated) {
+            this.updated = false;
+            this.render(timeStamp);
+        }
         this.animationFrameRequest = window.requestAnimationFrame(this.handleRun);
     };
 

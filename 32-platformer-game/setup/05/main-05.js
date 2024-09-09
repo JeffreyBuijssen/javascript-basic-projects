@@ -17,21 +17,61 @@ execute until the document has finished loadingand we have access to all of our 
 window.addEventListener('load', function (event) {
     "use strict";
 
-        ///////////////////
-      //// Functions ////
+    /////////////////
+    //// CLASSES ////
+    /////////////////
+    const AssetsManager = function () {
+        this.tileSetImage = undefined;
+    };
+
+    AssetsManager.prototype = {
+        constructor: Game.AssetManager,
+
+        loadTileSetImage: function (url, callback) {
+            this.tileSetImage = new Image();
+            this.tileSetImage.addEventListener('load', function (event) {
+                callback();
+            }, { once: true });
+
+            this.tileSetImage.src = url;
+        }
+    };
+
+
+
+    ///////////////////
+    //// Functions ////
     ///////////////////
     var keyDownUp = function (event) {
         controller.keyDownUp(event.type, event.keyCode);
-    }
+    };
 
     const resize = function () {
-        console.log('Main.resize:' + document.documentElement.clientWidth);
-        display.resize(document.documentElement.clientWidth - 32, document.documentElement.clientHeight - 32, game.world.height / game.world.width);
+        display.resize(
+            document.documentElement.clientWidth,
+            document.documentElement.clientHeight,
+            game.world.height / game.world.width
+        );
         display.render();
-    }
+    };
 
     var render = function () {
-        display.preDraw(game.world.backgroundColor, [game.world.player]);
+        display.drawMap(
+            assetsManager.tileSetImage,
+            game.world.tileSet.columns,
+            game.world.map,
+            game.world.columns,
+            game.world.tileSet.tileSize);
+
+        let frame = game.world.tileSet.frames[game.world.player.frameValue];
+        display.drawObject(
+            assetsManager.tileSetImage,
+            frame.x, frame.y,
+            game.world.player.x + Math.floor(game.world.player.width * 0.5 - frame.width * 0.5) + frame.offsetX,
+            game.world.player.y + frame.offsetY,
+            frame.width,
+            frame.height
+        );
         display.render();
     };
 
@@ -43,8 +83,8 @@ window.addEventListener('load', function (event) {
         game.update();
     };
 
-      /////////////////
-     //// Objects ////
+    /////////////////
+    //// Objects ////
     /////////////////
 
     /* Usually I just write my logical sections into object literals, but the temptation
@@ -52,6 +92,7 @@ window.addEventListener('load', function (event) {
     In an effort toattain cleaner code, I have written classes for each section
     and instantiate them here. */
 
+    var assetsManager = new AssetsManager(); // Behold the new assetsManager!
     // the controller handles user input
     var controller = new Controller();
     // the display handles window resizing and the canvas.
@@ -59,29 +100,29 @@ window.addEventListener('load', function (event) {
     // t he game willl eventually hold our game logic.
     var game = new Game();
     // the engine is where the above three sections can interact.
-    var engine = new Engine(1000 / 30, render, update);
+    var engine = new Engine(1000/30, render, update);
 
-      ////////////////////
-     //// Initialize ////
+    ////////////////////
+    //// Initialize ////
     ////////////////////
     display.buffer.canvas.height = game.world.height;
     display.buffer.canvas.width = game.world.width;
+    display.buffer.imageSmoothingEnabled = false;
 
+    /* Now my image is loaded into the assets manager instead of the display object.
+    The callback starts the game engine when the graphic is loaded. */
 
-    window.addEventListener('resize', resize);
-    /*window.addEventListener('keydown', function () {
-        console.log('a key has been pressed');
-    });*/
+    assetsManager.loadTileSetImage('rabbit-trap.png', () => {
+        resize();
+        engine.start();
+    });
+
+   assetsManager.tileSetImage.src = 'rabbit-trap.png';
+
     window.addEventListener('keydown', keyDownUp);
     window.addEventListener('keyup', keyDownUp);
-
-    resize();
-    engine.start();
-
-       ////////////////////////
-      //// Event Handlers ////
-    ////////////////////////
-
-
-    
+    window.addEventListener('resize', resize);
 });
+
+
+

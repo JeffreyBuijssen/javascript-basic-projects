@@ -1,0 +1,35 @@
+display.js
+1. Removed the TileSheet class from part 3 and added the Game.World.TileSet class to Game.
+2. Changed the drawMap function to be as generic as posible.
+3. Changed the drawPlayer function to the drawObject function.
+game.js
+1. Added the Game.World.TileSet & Game.World.TileSet.Frame classes.
+2. Added the Game.World.Object.Animator class.
+3. Updated the Player object to include frame sets for his animations.
+   Updated the Player to update position and animation separately.
+4. Removed tile_size from the world object and only use tile_size from the tile_set object.
+5. Moved Game.World.Player to Game.World.Object.Player.
+6. Changed Game.World.prototype.update to better handle player animation updates.
+
+I'm starting to realize that perhaps the nesting constructor naming convension is
+getting out of hand. Game.World.Object.Animator is a very long and confusing constructor.
+I may just move everything under Game so everything is still namespaced, but things won't
+have super long ridiculous constructors. However, the long constructor is still useful
+to determine where a class is pertinent and what it's purpose is. Still, it feels very
+clunky, and I will probably change it soon. */
+
+/* 04/11/2018 I noticed a problem with tunneling in the lower right nook of the T
+on the floor of the level. If you run into from the right and jump up, the player
+seemingly moves through the wall. This is not a problem with tile collision, but rather,
+tunneling. His jump velocity moves him upwards more than one full tile space.
+
+main.js
+1. I added an AssetsManager class which will eventually store all my graphics and sounds.
+2. The render function now draws the player's frame instead of a square like in part 4.
+3. The resize function now stretches the display canvas to the full viewport capacity.
+
+The project is starting to grow unmanagable as it grows. Luckily my IPO structure
+is dramatically decreasing the amount of rewrites I have to do to other classes,
+but since most of my code is in the Game class, edits in that class are becoming
+rather tedious. As the project grows I will have to focus my videos more on individual
+changes and ignore the vast bulk of existing code.

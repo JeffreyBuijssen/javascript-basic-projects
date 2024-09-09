@@ -83,7 +83,6 @@ Game.World.prototype = {
 /* The player is also its own class now. Since player only appears in the context
 of Game.World, that is where it is defined. */
 Game.World.Player = function(x, y) {
-
   this.color1     = "#404040";
   this.color2     = "#f0f0f0";
   this.height     = 12;
@@ -93,7 +92,6 @@ Game.World.Player = function(x, y) {
   this.width      = 12;
   this.x          = 100;
   this.y          = 50;
-
 };
 
 Game.World.Player.prototype = {

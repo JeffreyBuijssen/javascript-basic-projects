@@ -10,6 +10,10 @@ const Display = function (canvas) {
     // add and create a buffer canvas to the document
     // reference to the context of the provided canvas (in constructor parameter)
 
+    this.drawRectangle = function (x, y, width, height, color) {
+        this.buffer.fillStyle = color;
+        this.buffer.fillRect(Math.floor(x), Math.floor(y), width, height);
+    };
 
     this.preDraw = function (backgroundColor, gameObjects) {
         this.drawBackground(backgroundColor);
@@ -21,15 +25,14 @@ const Display = function (canvas) {
     this.drawBackground = function (color) {
         //console.log(color);
         this.buffer.fillStyle = color;
-        this.buffer.fillRect(0, 0, this.buffer.canvas.width, this.buffer.canvas.height);
+        this.drawRectangle(0, 0, this.buffer.canvas.width, this.buffer.canvas.height, color);
     };
 
     this.drawObject = function (gameObject) {
-        this.buffer.fillStyle = gameObject.color;
-        this.buffer.fillRect(gameObject.x,
+        this.drawRectangle(gameObject.x,
             gameObject.y,
             gameObject.width,
-            gameObject.height
+            gameObject.height, gameObject.color
         );
     };
 
@@ -49,23 +52,23 @@ const Display = function (canvas) {
         );
     };
 
-    this.resize = function (event) {
-        let height, width;
-
-        height = document.documentElement.clientHeight;
-        width = document.documentElement.clientWidth;
-
-        this.context.canvas.height = height - 32;
-        this.context.canvas.width = width - 32;
-
-        this.render();
+    this.resize = function (width, height, aspectRatio) {
+        console.log(`height: ${height}\nwidth: ${width}\naspectRatio: ${aspectRatio}`);
+        console.log('dislay.resize has been called');
+        if (height / width > aspectRatio) {
+            this.context.canvas.height = width * aspectRatio;
+            this.context.canvas.width = width;
+        } else {
+            this.context.canvas.height = height;
+            this.context.canvas.width = height / aspectRatio;
+        }
+        this.context.imageSmoothingEnabled = false;
     };
     // a function that resizes the canvas when the browser window is resized.
     // calculates new width and height, adjusts canvas then calls this.render()
 
     // subscribe to the resize event
     this.handeResize = (event) => this.resize();
-
 };
 
 Display.prototype = {
