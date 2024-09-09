@@ -100,7 +100,7 @@ window.addEventListener('load', function (event) {
     // t he game willl eventually hold our game logic.
     var game = new Game();
     // the engine is where the above three sections can interact.
-    var engine = new Engine(1000/30, render, update);
+    var engine = new Engine(1000/1, render, update);
 
     ////////////////////
     //// Initialize ////

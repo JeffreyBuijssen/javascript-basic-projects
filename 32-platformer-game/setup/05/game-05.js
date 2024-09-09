@@ -68,15 +68,15 @@ Game.World = function (friction = 0.8, gravity = 2) {
       any way you want. This is just the way I chose to keep track of which values represent
       which tiles. I haven't tested this representation approach with more advanced shapes. */
 
-    this.collisionMap = [00, 08, 08, 08, 00, 00, 08, 08, 08, 08, 08, 00,
-                         04, 00, 00, 00, 10, 12, 00, 00, 00, 00, 00, 02,
-                         04, 00, 00, 00, 00, 00, 00, 03, 09, 09, 01, 00,
-                         00, 13, 00, 00, 00, 00, 00, 14, 00, 00, 02, 00,
-                         04, 00, 00, 01, 00, 01, 00, 00, 00, 11, 08, 00,
-                         04, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 02,
-                         04, 00, 00, 11, 01, 13, 00, 00, 07, 00, 03, 00,
-                         00, 05, 00, 00, 06, 00, 00, 00, 02, 01, 00, 00,
-                         08, 40, 01, 01, 00, 01, 01, 01, 00, 00, 00, 00];
+    this.collisionMap = [00, 04, 04, 04, 00, 00, 04, 04, 04, 04, 04, 00,
+                         02, 00, 00, 00, 12, 06, 00, 00, 00, 00, 00, 08,
+                         02, 00, 00, 00, 00, 00, 00, 09, 05, 05, 01, 00,
+                         00, 07, 00, 00, 00, 00, 00, 14, 00, 00, 08, 00,
+                         02, 00, 00, 01, 00, 01, 00, 00, 00, 13, 04, 00,
+                         02, 00, 00, 00, 00, 00, 00, 00, 00, 00, 00, 08,
+                         02, 00, 00, 13, 01, 07, 00, 00, 11, 00, 09, 00,
+                         00, 03, 00, 00, 10, 00, 00, 00, 08, 01, 00, 00,
+                         00, 00, 01, 01, 00, 01, 01, 01, 00, 00, 00, 00];
 
     /* height and Width now depend on the map size. */
     this.height = this.tileSet.tileSize * this.rows;
@@ -107,37 +107,36 @@ Game.World.prototype = {
         } else if (object.getBottom() > this.height) {
             object.setBottom(this.height);
             object.velocity.y = 0;
+            object.jumping = false;
         }
 
         // tile collsion:
-        var bottom, left, right, top, currentTile;
+        var bottom, left, right, top, value;
         // Do collision detection for top left corner
-        top = Math.floor(object.getTop() / this.tileSet.tileSize);
-        left = Math.floor(object.getLeft() / this.tileSet.tileSize);
-        currentTile = this.collisionMap[top * this.columns + left];
-        this.collider.collide(currentTile, object, left * this.tileSet.tileSize, top * this.tileSet.tileSize, this.tileSet.tileSize);
+        top =    Math.floor(object.getTop()      / this.tileSet.tileSize);
+        left =   Math.floor(object.getLeft()     / this.tileSet.tileSize);
+        value = this.collisionMap[top * this.columns + left];
+        this.collider.collide(value, object, left * this.tileSet.tileSize, top * this.tileSet.tileSize, this.tileSet.tileSize);
 
         // do collsion detection for top right corner
         // have to re-check top and right, since the last collision detection might have moved the object.
-        top = Math.floor(object.getTop() / this.tileSet.tileSize);
-        right = Math.floor(object.getRight() / this.tileSet.tileSize);
-        currentTile = this.collisionMap[top * this.columns + right];
-
-
-        this.collider.collide(currentTile, object, right * this.tileSet.tileSize, top * this.tileSet.tileSize, this.tileSet.tileSize);
+        top =    Math.floor(object.getTop()     / this.tileSet.tileSize);
+        right =  Math.floor(object.getRight()   / this.tileSet.tileSize);
+        value = this.collisionMap[top * this.columns + right];
+        this.collider.collide(value, object, right * this.tileSet.tileSize, top * this.tileSet.tileSize, this.tileSet.tileSize);
 
         // Do collision detection for bottom left corner
-        bottom = Math.floor(object.getBottom() / this.tileSize);
-        left = Math.floor(object.getLeft() / this.tileSize);
-        currentTile = this.collisionMap[bottom * this.columns + left];
-        this.collider.collide(currentTile, object, left * this.tileSet.tileSize, bottom * this.tileSet.tileSize, this.tileSet.tileSize);
+        bottom = Math.floor(object.getBottom()  / this.tileSet.tileSize);
+        left =   Math.floor(object.getLeft()    / this.tileSet.tileSize);
+        value = this.collisionMap[bottom * this.columns + left];
+        this.collider.collide(value, object, left * this.tileSet.tileSize, bottom * this.tileSet.tileSize, this.tileSet.tileSize);
 
         // do collision detection for bottom right
-        bottom = Math.floor(object.getBottom() / this.tileSet.tileSize);
-        right = Math.floor(object.getRight() / this.tileSet.tileSize);
+        bottom = Math.floor(object.getBottom()  / this.tileSet.tileSize);
+        right =  Math.floor(object.getRight()   / this.tileSet.tileSize);
 
-        currentTile = this.collisionMap[bottom * this.columns + right];
-        this.collider.collide(currentTile, object, right * this.tileSet.tileSize, bottom * this.tileSet.tileSize, this.tileSet.tileSize);
+        value = this.collisionMap[bottom * this.columns + right];
+        this.collider.collide(value, object, right * this.tileSet.tileSize, bottom * this.tileSet.tileSize, this.tileSet.tileSize);
 
     },
 
@@ -177,72 +176,39 @@ Game.World.Collider = function () {
             //case 0b0000:
             //   no collisions
             //  break;
-            case 0b0001:
-                this.collidePlatformTop(object, tileY);
-                break;
-            case 0b0010:
-                this.collidePlatformLeft(object, tileX);
-                break;
-            case 0b0011:
-                if (this.collidePlatformTop(object, tileY)) return;
-                this.collidePlatformLeft(object, tileX);
-                break;
-            case 0b0100:
-                this.collidePlatformRight(object, tileX + tileSize);
-                break;
-            case 0b0101:
-                if (this.collidePlatformTop(object, tileY)) return;
-                this.collidePlatformRight(object, tileX + tileSize);
-                break;
-            case 0b0110:
-                if (this.collidePlatformLeft(object, tileX)) return;
-                this.collidePlatformRight(object, tileX + tileSize);
-                break;
-            case 0b0111:
-                if (this.collidePlatformTop(object, tileY)) return;
-                if (this.collidePlatformLeft(object, tileX)) return;
-                this.collidePlatformRight(object, tileX + tileSize);
-                break;
-            case 0b1000:
-                this.collidePlatformBottom(object, tileY + tileSize);
-                break;
-            case 0b1001:
-                if (this.collidePlatformTop(object, tileY)) return;
-                this.collidePlatformBottom(object, tileY + tileSize);
-                break;
-            case 0b1010:
-                if (this.collidePlatformLeft(object, tileX)) return;
-                this.collidePlatformBottom(object, tileY + tileSize);
-                break;
-            case 0b1011:
-                if (this.collidePlatformTop(object, tileY)) return;
-                this.collidePlatformBottom(object, tileY + tileSize);
-                break;
-            case 0b1100:
-                if (this.collidePlatformRight(object, tileX + tileSize)) return;
-                this.collidePlatformBottom(object, tileY + tileSize);
-                break;
-            case 0b1101:
-                if (this.collidePlatformTop(object, tileY)) return;
-                if (this.collidePlatformRight(object, tileX + tileSize)) return;
-                this.collidePlatformBottom(object, tileY + tileSize);
-                break;
-            case 0b1110:
-                if (this.collidePlatformLeft(object, tileX)) return;
-                if (this.collidePlatformRight(object, tileX + tileSize)) return;
-                this.collidePlatformBottom(object, tileY + tileSize);
-                break;
-            case 0b1111:
-                if (this.collidePlatformTop(object, tileY)) return;
-                if (this.collidePlatformLeft(object, tileX)) return;
-                if (this.collidePlatformRight(object, tileX + tileSize)) return;
-                this.collidePlatformBottom(object, tileY + tileSize);
-                break;
-            default:
-
+            case 0b0001: this.collidePlatformTop      (object, tileY           ); break;
+            case 0b0010: this.collidePlatformRight    (object, tileX + tileSize); break;
+            case 0b0011: if (this.collidePlatformTop  (object, tileY           )) return;
+                         this.collidePlatformRight    (object, tileX + tileSize); break;
+            case 0b0100: this.collidePlatformBottom   (object, tileY + tileSize); break;
+            case 0b0101: if (this.collidePlatformTop  (object, tileY           )) return;
+                         this.collidePlatformBottom   (object, tileY + tileSize); break;
+            case 0b0110: if (this.collidePlatformRight(object, tileX + tileSize)) return;
+                         this.collidePlatformBottom   (object, tileY + tileSize); break;
+            case 0b0111: if (this.collidePlatformTop  (object, tileY           )) return;
+                         if (this.collidePlatformRight(object, tileX + tileSize)) return;
+                         this.collidePlatformBottom   (object, tileY + tileSize); break;
+            case 0b1000: this.collidePlatformLeft     (object, tileX           ); break;
+            case 0b1001: if (this.collidePlatformTop  (object, tileY           )) return;
+                         this.collidePlatformLeft     (object, tileX           ); break;
+            case 0b1010: if (this.collidePlatformLeft (object, tileX           )) return;
+                         this.collidePlatformRight    (object, tileX + tileSize); break;
+            case 0b1011: if (this.collidePlatformTop  (object, tileY           )) return;
+                         if (this.collidePlatformLeft (object, tileX           )) return;
+                         this.collidePlatformRight    (object, tileX + tileSize); break;
+            case 0b1100: if (this.collidePlatformLeft (object, tileX           )) return;
+                         this.collidePlatformBottom   (object, tileY + tileSize); break;
+            case 0b1101: if (this.collidePlatformTop  (object, tileY           )) return;
+                         if (this.collidePlatformLeft (object, tileX           )) return;
+                         this.collidePlatformBottom   (object, tileY + tileSize); break;
+            case 0b1110: if (this.collidePlatformLeft (object, tileX           )) return;
+                         if (this.collidePlatformRight(object, tileX + tileSize)) return;
+                         this.collidePlatformBottom   (object, tileY + tileSize); break;
+            case 0b1111: if (this.collidePlatformTop  (object, tileY           )) return;
+                         if (this.collidePlatformLeft (object, tileX           )) return;
+                         if (this.collidePlatformRight(object, tileX + tileSize)) return;
+                         this.collidePlatformBottom   (object, tileY + tileSize); break;
         }
-
-
     };
 };
 
@@ -379,7 +345,7 @@ Game.World.Object.Player = function (x, y) {
     // this.width = 16; moved to base
     // this.x = 100; moved to base
     // this.y = 50; moved to base
-    this.JUMPING_SPEED = 20;
+    this.JUMPING_SPEED = 15;
 };
 
 Game.World.Object.Player.prototype = {
@@ -396,7 +362,7 @@ Game.World.Object.Player.prototype = {
     },
 
     jump: function () {
-        if (!this.jumping) {
+        if (!this.jumping && this.velocity.y < 10) {
             this.jumping = true;
             this.velocity.y -= this.JUMPING_SPEED;
         }
@@ -419,17 +385,19 @@ Game.World.Object.Player.prototype = {
             else this.changeFrameSet(this.frameSets['jump-right'], 'pause');
         // if facing left
         } else if (this.direction.x < 0) {
-            if (this.velocity.x < -0.1) this.changeFrameSet(this.frameSets['move-left'], 'loop');
+            if (this.velocity.x < -0.1) this.changeFrameSet(this.frameSets['move-left'], 'loop', 5);
             else this.changeFrameSet(this.frameSets['idle-left'], 'pause');
         // if facing right
         } else if (this.direction.x > 0) {
-            if (this.velocity.x > 0.1) this.changeFrameSet(this.frameSets['move-right'], 'loop');
+            if (this.velocity.x > 0.1) this.changeFrameSet(this.frameSets['move-right'], 'loop', 5);
             else this.changeFrameSet(this.frameSets['idle-right'], 'pause');
         }
         this.animate();
     },
 
     updatePosition: function (gravity, friction) {
+        console.log(`velocity: (${this.velocity.x}, ${this.velocity.y})`);
+
         this.oldX = this.x;
         this.oldY = this.y;
 
