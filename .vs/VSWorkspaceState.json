@@ -3,14 +3,14 @@
     "",
     "\\32-platformer-game",
     "\\32-platformer-game\\final",
-    "\\32-platformer-game\\final\\03",
-    "\\32-platformer-game\\final\\04",
     "\\32-platformer-game\\final\\05",
+    "\\32-platformer-game\\final\\06",
     "\\32-platformer-game\\setup",
     "\\32-platformer-game\\setup\\01",
     "\\32-platformer-game\\setup\\02",
-    "\\32-platformer-game\\setup\\05"
+    "\\32-platformer-game\\setup\\05",
+    "\\32-platformer-game\\setup\\06"
   ],
-  "SelectedNode": "\\32-platformer-game\\final\\05\\main-05.js",
+  "SelectedNode": "\\32-platformer-game\\setup\\06\\zone00.json",
   "PreviewInSolutionExplorer": false
 }

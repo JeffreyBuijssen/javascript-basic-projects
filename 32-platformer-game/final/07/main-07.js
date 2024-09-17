@@ -125,7 +125,7 @@ window.addEventListener("load", function(event) {
     }
 
     p.innerHTML = "Carrots: " + game.world.carrot_count;
-
+    
     display.render();
 
   };
