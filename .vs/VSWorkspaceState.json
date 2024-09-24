@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\32-platformer-game",
-    "\\32-platformer-game\\final",
-    "\\32-platformer-game\\final\\05",
-    "\\32-platformer-game\\final\\06",
     "\\32-platformer-game\\setup",
     "\\32-platformer-game\\setup\\01",
     "\\32-platformer-game\\setup\\02",
     "\\32-platformer-game\\setup\\05",
-    "\\32-platformer-game\\setup\\06"
+    "\\32-platformer-game\\setup\\06",
+    "\\32-platformer-game\\setup\\07",
+    "\\33-doodle-jump\\setup",
+    "\\34-flappy-bird",
+    "\\34-flappy-bird\\setup"
   ],
-  "SelectedNode": "\\32-platformer-game\\setup\\06\\zone00.json",
+  "SelectedNode": "\\34-flappy-bird\\setup\\index.html",
   "PreviewInSolutionExplorer": false
 }
